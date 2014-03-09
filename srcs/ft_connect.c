@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 15:50:22 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 21:01:29 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 22:56:28 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		put_tocken(t_grid *grid, int move, int player)
 	{
 		while (i >= 0 && grid->map[i][move] != 0)
 			i--;
-		if (i >= 0)
+		if (i > 0)
 		{
 			grid->map[i][move] = player;
 			if (check_win(grid, i, move, player) == 1)
@@ -79,7 +79,6 @@ int		get_move(int player, t_grid *grid)
 	{
 		if (get_next_line(0, &line) < 0 || line == NULL)
 			return (-1);
-		/* VERIFIER QU IL S AGIT BIEN D UN NOMBRE */
 		move = ft_atoi(line);
 		free(line);
 	}
@@ -100,8 +99,7 @@ void	puissance4(t_grid *grid)
 
 	end = 0;
 	move = -1;
-	/* RANDOMLY CHOOSE THE PLAYER WHO START */
-	player = 1;
+	player = (ft_rand() % 2) + 1;
 	result = 0;
 	nbcoup = grid->width * grid->height;
 	while (end == 0 && nbcoup > 0)

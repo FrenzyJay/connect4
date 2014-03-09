@@ -6,10 +6,12 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 03:02:19 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 21:23:49 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 22:04:13 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
+#include <stdlib.h>
 #include "puissance4.h"
 
 int		ft_logten(int x)
@@ -43,3 +45,12 @@ void	victory(int player, t_grid *grid)
 		ft_putstrcolor("\nPlayer 2 WIN\n", SYELLOW, 0);
 }
 
+int		ft_rand(void)
+{
+	int	random;
+
+	random = 0;
+	srand(time(NULL));
+	random = rand();
+	return (random);
+}

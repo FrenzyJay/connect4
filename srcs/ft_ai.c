@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 15:53:15 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 21:39:55 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 22:59:01 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int		player_victory(t_grid * grid, int player)
 	return (-1);
 }
 
+int		col_full(t_grid *grid, int col)
+{
+	if (grid->map[1][col - 1] == 0)
+		return (1);
+	return (0);
+}
+
 int		get_best_move(t_grid *grid, int player)
 {
 	int	coord[2];
@@ -67,28 +74,6 @@ int		get_best_move(t_grid *grid, int player)
 	return (-1);
 }
 
-int		col_full(t_grid *grid, int col)
-{
-	int	i;
-
-	i = grid->height - 1;
-	while (i >= 0 && grid->map[i][col] != 0)
-		i--;
-	if (i >= 0)
-		return (1);
-	return (0);
-}
-
-int		random_move(int width)
-{
-	static int	i = 0;
-
-	i++;
-	if (i > width)
-		i = i % width;
-	return (i);
-}
-
 int		ft_ai(t_grid *grid)
 {
 	int	move;
@@ -105,12 +90,9 @@ int		ft_ai(t_grid *grid)
 			move = tmp;
 		else if ((tmp = get_best_move(grid, 2)) != -1)
 			move = tmp;
-		else
-		{
-			while (col_full(grid, move) == 0)
-				move = random_move(grid->width);
-		}
 	}
+	while (col_full(grid, move) == 0)
+		move = (ft_rand() % grid->width) + 1;
 	ft_printf("%d\n", move);
 	return (move);
 }

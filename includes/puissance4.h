@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:13:55 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 21:13:31 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 21:59:48 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		nb_br(t_grid *grid, int y, int x, int player);
 int		ft_logten(int x);
 void	put_prompt(int player, t_grid *grid);
 void	victory(int player, t_grid *grid);
+int		ft_rand(void);
 
 /*
 ** ft_connect.c
