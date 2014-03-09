@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:13:55 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 18:25:12 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 21:13:31 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include "libft.h"
 
 # define ENDCOLOR "\33[0m"
-# define RED "\33[31m"
-# define CYAN "\33[36m"
-# define YELLOW "\33[0;33m"
-# define GREY "\33[1;30m"
+# define RED "\33[31m\33[44m"
+# define SRED "\33[31m"
+# define CYAN "\33[36m\33[44m"
+# define YELLOW "\33[0;33m\33[44m"
+# define SYELLOW "\33[0;33m"
+# define GREY "\33[1;30m\33[44m"
 # define CLEARTERM "\033[2J\033[0;0H"
 
 typedef struct	s_grid

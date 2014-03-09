@@ -6,13 +6,13 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 03:02:19 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 15:49:40 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 21:23:49 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance4.h"
 
-int	ft_logten(int x)
+int		ft_logten(int x)
 {
 	int	len;
 
@@ -29,17 +29,17 @@ void	put_prompt(int player, t_grid *grid)
 {
 	ft_puttab(grid->map, grid->height, grid->width);
 	if (player == 1)
-		ft_printf("\n%splayer %d%s : ", RED, player, ENDCOLOR);
+		ft_printf("\n%splayer %d%s : ", SRED, player, ENDCOLOR);
 	else
-		ft_printf("\n%splayer %d%s : ", YELLOW, player, ENDCOLOR);
+		ft_printf("\n%splayer %d%s : ", SYELLOW, player, ENDCOLOR);
 }
 
 void	victory(int player, t_grid *grid)
 {
 	ft_puttab(grid->map, grid->height, grid->width);
 	if (player == 1)
-		ft_putstrcolor("\nPlayer 1 WIN\n", RED, 0);
+		ft_putstrcolor("\nPlayer 1 WIN\n", SRED, 0);
 	else
-		ft_putstrcolor("\nPlayer 2 WIN\n", YELLOW, 0);
+		ft_putstrcolor("\nPlayer 2 WIN\n", SYELLOW, 0);
 }
 

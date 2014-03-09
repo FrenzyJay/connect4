@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:36:30 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 18:27:46 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 21:38:30 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	ft_puttab(int **tab, int y, int x)
 
 	j = 0;
 	width = ft_logten(x);
-//	ft_putstr(CLEARTERM);
+	ft_putstr(CLEARTERM);
 	ft_printf("\n");
-	while (j < y)
+	while (++j < y)
 	{
 		i = 0;
 		while (i < x)
@@ -72,8 +72,8 @@ void	ft_puttab(int **tab, int y, int x)
 				ft_putstrcolor("◉", YELLOW, width);
 			i++;
 		}
+		ft_putstrcolor(" ", RED, 0);
 		ft_printf("\n");
-		j++;
 	}
 	ft_putcolnum(x, width);
 }

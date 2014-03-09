@@ -6,14 +6,14 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 15:53:15 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 19:00:20 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 21:39:55 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance4.h"
 
 int		player_victory(t_grid * grid, int player)
-{	
+{
 	int	i;
 	int	j;
 
@@ -47,7 +47,7 @@ int		get_best_move(t_grid *grid, int player)
 	while (len > 0)
 	{
 		coord[0] = 0;
-		while (coord[0] < grid->width)
+		while (++coord[0] < grid->width)
 		{
 			coord[1] = grid->height - 1;
 			while (coord[1] >= 0 && grid->map[coord[1]][coord[0]] != 0)
@@ -55,16 +55,14 @@ int		get_best_move(t_grid *grid, int player)
 			if (coord[1] >= 0)
 			{
 				grid->map[coord[1]][coord[0]] = player;
-				if (check_align(grid, coord, player, len) == 1)
+				if (check_align(grid, coord, player, len--) == 1)
 				{
 					grid->map[coord[1]][coord[0]] = 0;
 					return (coord[0] + 1);
 				}
 				grid->map[coord[1]][coord[0]] = 0;
 			}
-			coord[0]++;
 		}
-		len--;
 	}
 	return (-1);
 }

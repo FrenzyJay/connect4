@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 15:50:22 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 18:30:48 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 21:01:29 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int		get_move(int player, t_grid *grid)
 	move = 0;
 	if (player == 1 || player == 1)
 	{
-		get_next_line(0, &line);
+		if (get_next_line(0, &line) < 0 || line == NULL)
+			return (-1);
 		/* VERIFIER QU IL S AGIT BIEN D UN NOMBRE */
 		move = ft_atoi(line);
 		free(line);
@@ -106,7 +107,8 @@ void	puissance4(t_grid *grid)
 	while (end == 0 && nbcoup > 0)
 	{
 		put_prompt(player, grid);
-		move = get_move(player, grid);
+		if ((move = get_move(player, grid)) == -1)
+			return ;
 		if ((result = put_tocken(grid, move, player)) == 0)
 		{
 			player = (player == 1 ? 2 : 1);
