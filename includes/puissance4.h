@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:13:55 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 15:52:09 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 18:25:12 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	victory(int player, t_grid *grid);
 void	puissance4(t_grid *grid);
 int		get_move(int player, t_grid *grid);
 int		put_tocken(t_grid *grid, int move, int player);
-int		check_win(t_grid *grid, int y, int x);
+int		check_win(t_grid *grid, int y, int x, int player);
+int		check_align(t_grid *grid, int c[2], int player, int len);
 
 /*
 ** ft_ai.c

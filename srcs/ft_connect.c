@@ -6,18 +6,15 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 15:50:22 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 15:54:26 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 18:30:48 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "puissance4.h"
 
-int		check_win(t_grid *grid, int y, int x)
+int		check_win(t_grid *grid, int y, int x, int player)
 {
-	int	player;
-
-	player = grid->map[y][x];
 	if (nb_left(grid, y, x, player) + nb_right(grid, y, x, player) >= 5)
 		return (1);
 	if (nb_top(grid, y, x, player) + nb_bottom(grid, y, x, player) >= 5)
@@ -25,6 +22,24 @@ int		check_win(t_grid *grid, int y, int x)
 	if (nb_tl(grid, y, x, player) + nb_br(grid, y, x, player) >= 5)
 		return (1);
 	if (nb_bl(grid, y, x, player) + nb_tr(grid, y, x, player) >= 5)
+		return (1);
+	return (0);
+}
+
+int		check_align(t_grid *grid, int c[2], int player, int len)
+{
+	int	x;
+	int	y;
+
+	x = c[0];
+	y = c[1];
+	if (nb_left(grid, y, x, player) + nb_right(grid, y, x, player) >= len + 1)
+		return (1);
+	if (nb_top(grid, y, x, player) + nb_bottom(grid, y, x, player) >= len + 1)
+		return (1);
+	if (nb_tl(grid, y, x, player) + nb_br(grid, y, x, player) >= len + 1)
+		return (1);
+	if (nb_bl(grid, y, x, player) + nb_tr(grid, y, x, player) >= len + 1)
 		return (1);
 	return (0);
 }
@@ -42,7 +57,7 @@ int		put_tocken(t_grid *grid, int move, int player)
 		if (i >= 0)
 		{
 			grid->map[i][move] = player;
-			if (check_win(grid, i, move) == 1)
+			if (check_win(grid, i, move, player) == 1)
 				return (2);
 		}
 		else
@@ -60,7 +75,7 @@ int		get_move(int player, t_grid *grid)
 
 	line = NULL;
 	move = 0;
-	if (player == 1 || player == 2)
+	if (player == 1 || player == 1)
 	{
 		get_next_line(0, &line);
 		/* VERIFIER QU IL S AGIT BIEN D UN NOMBRE */
@@ -103,5 +118,7 @@ void	puissance4(t_grid *grid)
 			end = 1;
 		}
 	}
+	if (nbcoup == 0)
+		ft_printf("Draw\n");
 }
 
