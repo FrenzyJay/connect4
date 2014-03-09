@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:36:30 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 04:10:33 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 16:33:59 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	ft_puttab(int **tab, int y, int x)
 		while (i < x)
 		{
 			if (tab[j][i] == 0)
-				ft_putstrcolor(".", GREY, width);
+				ft_putstrcolor("◉", GREY, width);
 			else if (tab[j][i] == 1)
-				ft_putstrcolor("0", RED, width);
+				ft_putstrcolor("◉", RED, width);
 			else if (tab[j][i] == 2)
-				ft_putstrcolor("0", YELLOW, width);
+				ft_putstrcolor("◉", YELLOW, width);
 			i++;
 		}
 		ft_printf("\n");

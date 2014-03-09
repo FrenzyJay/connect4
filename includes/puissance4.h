@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:13:55 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 15:19:12 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 15:52:09 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,21 @@ int		nb_br(t_grid *grid, int y, int x, int player);
 ** ft_utils.c
 */
 int		ft_logten(int x);
+void	put_prompt(int player, t_grid *grid);
+void	victory(int player, t_grid *grid);
+
+/*
+** ft_connect.c
+*/
+void	puissance4(t_grid *grid);
+int		get_move(int player, t_grid *grid);
+int		put_tocken(t_grid *grid, int move, int player);
+int		check_win(t_grid *grid, int y, int x);
+
+/*
+** ft_ai.c
+*/
+int		ft_ai(t_grid *grid);
 
 #endif /* !PUISSANCE4_H */
 

@@ -6,7 +6,7 @@
 #    By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 18:33:50 by jvincent          #+#    #+#              #
-#    Updated: 2014/03/09 03:37:47 by jvincent         ###   ########.fr        #
+#    Updated: 2014/03/09 15:54:07 by jvincent         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,7 +24,9 @@ SRCS = 			srcs/main.c \
 				srcs/ft_destroytab.c \
 				srcs/ft_win.c \
 				srcs/ft_win_more.c \
-				srcs/ft_utils.c
+				srcs/ft_utils.c \
+				srcs/ft_ai.c \
+				srcs/ft_connect.c
 OBJ = 			$(SRCS:.c=.o)
 
 all: $(NAME)
