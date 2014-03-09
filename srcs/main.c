@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:10:46 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 04:09:07 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 15:33:21 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,54 @@ int		put_tocken(t_grid *grid, int move, int player)
 	return (0);
 }
 
-int		ft_ia(t_grid *grid)
+int		ft_ai(t_grid *grid)
 {
 	(void)grid;
 	return (4);
 }
 
+int		get_move(int player, t_grid *grid)
+{
+	int		move;
+	char	*line;
+
+	line = NULL;
+	move = 0;
+	if (player == 1 || player == 2)
+	{
+		get_next_line(0, &line);
+		/* VERIFIER QU IL S AGIT BIEN D UN NOMBRE */
+		move = ft_atoi(line);
+		free(line);
+	}
+	else
+	{
+		move = ft_ai(grid);
+	}
+	return (move);
+}
+
+void	put_prompt(int player, t_grid *grid)
+{
+	ft_puttab(grid->map, grid->height, grid->width);
+	if (player == 1)
+		ft_printf("\n%splayer %d%s : ", RED, player, ENDCOLOR);
+	else
+		ft_printf("\n%splayer %d%s : ", YELLOW, player, ENDCOLOR);
+}
+
+void	victory(int player, t_grid *grid)
+{
+	ft_puttab(grid->map, grid->height, grid->width);
+	if (player == 1)
+		ft_putstrcolor("\nPlayer 1 WIN\n", RED, 0);
+	else
+		ft_putstrcolor("\nPlayer 2 WIN\n", YELLOW, 0);
+}
+
 void	puissance4(t_grid *grid)
 {
 	int		end;
-	char	*line;
 	int		move;
 	int		player;
 	int		result;
@@ -71,33 +109,14 @@ void	puissance4(t_grid *grid)
 
 	end = 0;
 	move = -1;
-	line = NULL;
-
 	/* RANDOMLY CHOOSE THE PLAYER WHO START */
 	player = 1;
-
 	result = 0;
 	nbcoup = grid->width * grid->height;
 	while (end == 0 && nbcoup > 0)
 	{
-		ft_puttab(grid->map, grid->height, grid->width);
-		if (player == 1)
-			ft_printf("\n%splayer %d%s : ", RED, player, ENDCOLOR);
-		else
-			ft_printf("\n%splayer %d%s : ", YELLOW, player, ENDCOLOR);
-
-		if (player == 1 || player == 2)
-		{
-			get_next_line(0, &line);
-			/* VERIFIER QU IL S AGIT BIEN D UN NOMBRE */
-			move = ft_atoi(line);
-			free(line);
-		}
-		else
-		{
-			move = ft_ia(grid);
-		}
-
+		put_prompt(player, grid);
+		move = get_move(player, grid);
 		if ((result = put_tocken(grid, move, player)) == 0)
 		{
 			player = (player == 1 ? 2 : 1);
@@ -105,11 +124,7 @@ void	puissance4(t_grid *grid)
 		}
 		else if (result == 2)
 		{
-			ft_puttab(grid->map, grid->height, grid->width);
-			if (player == 1)
-				ft_putstrcolor("\nPlayer 1 WIN\n", RED, 0);
-			else
-				ft_putstrcolor("\nPlayer 2 WIN\n", YELLOW, 0);
+			victory(player, grid);
 			end = 1;
 		}
 	}
@@ -127,9 +142,7 @@ int		main(int argc, char **argv)
 	if (grid.height < 6 || grid.width < 7)
 		return (ft_error("The grid must be at least a 6x7\n"));
 	grid.map = ft_newtab(grid.height, grid.width);
-
 	puissance4(&grid);
-
 	ft_destroytab(grid.map, grid.height);
 	return (0);
 }

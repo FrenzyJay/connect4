@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:13:55 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 04:07:55 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 15:19:12 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define CYAN "\33[36m"
 # define YELLOW "\33[0;33m"
 # define GREY "\33[1;30m"
-# define CLEARTERM "\033[2J\r"
+# define CLEARTERM "\033[2J\033[0;0H"
 
 typedef struct	s_grid
 {
