@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:36:30 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/09 22:31:27 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 23:01:41 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_puttab(int **tab, int y, int x)
 
 	j = 0;
 	width = ft_logten(x);
-//	ft_putstr(CLEARTERM);
+	ft_putstr(CLEARTERM);
 	ft_printf("\n");
 	while (++j < y)
 	{
