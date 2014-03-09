@@ -6,7 +6,7 @@
 #    By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 18:33:50 by jvincent          #+#    #+#              #
-#    Updated: 2014/03/08 14:04:21 by jvincent         ###   ########.fr        #
+#    Updated: 2014/03/09 03:37:47 by jvincent         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,8 @@ SRCS = 			srcs/main.c \
 				srcs/ft_puttab.c \
 				srcs/ft_destroytab.c \
 				srcs/ft_win.c \
-				srcs/ft_win_more.c
+				srcs/ft_win_more.c \
+				srcs/ft_utils.c
 OBJ = 			$(SRCS:.c=.o)
 
 all: $(NAME)
@@ -33,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) 
 	@make -sC libft
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
 	@echo $(NAME) ok
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: jvincent <jvincent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 20:10:46 by jvincent          #+#    #+#             */
-/*   Updated: 2014/03/08 20:37:44 by jvincent         ###   ########.fr       */
+/*   Updated: 2014/03/09 04:09:07 by jvincent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	puissance4(t_grid *grid)
 		if (player == 1)
 			ft_printf("\n%splayer %d%s : ", RED, player, ENDCOLOR);
 		else
-			ft_printf("\n%splayer %d%s : ", CYAN, player, ENDCOLOR);
+			ft_printf("\n%splayer %d%s : ", YELLOW, player, ENDCOLOR);
 
 		if (player == 1 || player == 2)
 		{
@@ -107,9 +107,9 @@ void	puissance4(t_grid *grid)
 		{
 			ft_puttab(grid->map, grid->height, grid->width);
 			if (player == 1)
-				ft_putstrcolor("\nPlayer 1 WIN\n", RED);
+				ft_putstrcolor("\nPlayer 1 WIN\n", RED, 0);
 			else
-				ft_putstrcolor("\nPlayer 2 WIN\n", CYAN);
+				ft_putstrcolor("\nPlayer 2 WIN\n", YELLOW, 0);
 			end = 1;
 		}
 	}
